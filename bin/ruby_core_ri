@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
-require 'ruby_core_source'
+require 'ruby_core_ri/ruby_core_source'
 
+# sanity check
 myself = Gem.source_index.find_name('ruby_core_ri')
 myself ||= Gem.source_index.find_name('rogerdpack-ruby_core_ri')
 throw 'uninstall all old version of this gem first!' if myself.length > 1
@@ -10,7 +11,6 @@ myself = myself[0]
 to_dir = myself.full_gem_path + "/lib/downloaded_full_source"
 puts "installing your full source (for rdoc/ri purposes) to #{to_dir}"
 Ruby_core_source.download_headers nil, to_dir, false
-
 
 command = "gem rdoc --no-rdoc --ri ruby_core_ri"
 puts "downloading--extracting out the ri via " + command

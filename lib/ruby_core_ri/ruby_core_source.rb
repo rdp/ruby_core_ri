@@ -87,7 +87,6 @@ def download_headers hdrs, dest_dir = nil, just_headers = true, existing_pre_unp
     end
 
     FileUtils.mkdir_p(dest_dir)
-    require File.dirname(__FILE__) + "/dir_mktmpdir" unless Dir.respond_to? :mktmpdir
     Dir.mktmpdir { |dir|
       dir = existing_pre_unpacked_dir if existing_pre_unpacked_dir
       Archive::Tar::Minitar.unpack(tgz, dir) unless existing_pre_unpacked_dir
