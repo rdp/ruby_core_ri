@@ -1,0 +1,40 @@
+ruby_core_ri
+
+Installs the ri for Ruby's core docs for your current version, even if they didn't come with your distro.
+
+This utility is for those of us whose ruby distros are lacking in core RI.  For example.
+
+$ ri File
+Nothing known about File
+
+$
+
+now becomes
+
+$ ri File
+
+
+
+--------------------------------------------------- Class: File < Object
+
+FTOOLS.RB: EXTRA TOOLS FOR THE FILE CLASS
+=========================================
+
+     Author:        WATANABE, Hirofumi
+
+     Documentation: Zachary Landau
+...
+
+$
+
+
+This is quite helpful for those of us who want to use ri for core classes.  For me, at least, ri is quite useless without it.
+
+== Installation (takes a little while) ==
+
+$ gem install ruby_core_ri --source=http://gemcutter.org
+$ install_ruby_core_ri # download core's source, ri's it locally for you
+
+
+== Known issues ==
+You may need to uninstall the mislav-hanna gem first, if installed.
