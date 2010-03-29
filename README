@@ -1,11 +1,12 @@
 ruby_core_ri gem
 
-This utility is for those of us whose ruby distros are lacking in core RI (ex: mingw).  For example.
+This utility is for those whose ruby distros are lacking the core RI (ex: mingw).  For example, if you get this:
 
 $ ri File
 Nothing known about File
 
-Becomes
+
+After installing this gem, you will get the following:
 
 $ ri File
 --------------------------------------------------- Class: File < Object
@@ -18,14 +19,22 @@ FTOOLS.RB: EXTRA TOOLS FOR THE FILE CLASS
      Documentation: Zachary Landau
 ... [etc.]
 
-The gem downloads the source for your current Ruby version, then does a gem --ri against it, thus installing the ri for Ruby's core docs.
+The gem downloads the source for your current Ruby version, then does a gem --ri 
+against your version, thus installing the ri for Ruby's core docs locally.
 
 This is quite helpful for those of us who want to use ri for core classes.
 
 == Installation (takes a little while) ==
 
+* For all versions:
+
 $ gem install ruby_core_ri
-$ ruby_core_ri # run this command--it download your distro's sources, ri's them locally
+$ ruby_core_ri # download your distro's sources, ri's them locally
+
+* Note: for 1.9 users you have to install rdoc > 2.4.3 for it to work.  To do so (until it is released):
+
+    $ gem install specific_install
+    $ gem git_install -l http://github.com/downloads/rdp/rdoc/rdoc-2.5.0.prealpha.gem
 
 == Known issues ==
-You may need to uninstall the mislav-hanna gem first, if installed.
+You may need to uninstall the mislav-hanna gem first, if you have it installed (which is probably pretty rare).

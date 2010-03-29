@@ -46,8 +46,9 @@ def download_headers hdrs, dest_dir = nil, just_headers = true, existing_pre_unp
 
   ruby_dir = ""
   ruby_version = RUBY_VERSION[0..-3]
+  
   if RUBY_VERSION >= '1.9'
-    ruby_version = '1.8' # for the latest 1.8.7 patch, for now [see below]
+    puts "Warning: if this fails, you may need to install rdp-rdoc gem until rdoc > 2.4.3 gem is available"    
   end
 
   if RUBY_PATCHLEVEL < 0
@@ -63,13 +64,7 @@ def download_headers hdrs, dest_dir = nil, just_headers = true, existing_pre_unp
   else
 
     version = RUBY_VERSION.to_s
-    patch_level = RUBY_PATCHLEVEL.to_s
-    if RUBY_VERSION >= '1.9'
-      $stderr.puts 'WARNING: installing the 1.8.7 source, since ri doesn\'t work on 1.9 core source quite yet'
-      version = '1.8.7'
-      patch_level = '160'
-    end
-      
+    patch_level = RUBY_PATCHLEVEL.to_s      
     ruby_dir = "ruby-" + version + "-p" + patch_level
   end
 
