@@ -9,7 +9,8 @@
     s.add_development_dependency 'sane'
     s.add_dependency 'backports'
     s.add_dependency 'archive-tar-minitar'
-    # hopefully a warning is enough... # s.add_dependency 'rdoc', '> 2.4.3'
+    # hopefully a warning is enough... 
+    s.add_dependency 'rdoc', '>=2.4.3' # 1.9 needs > ... see README
     s.post_install_message  = "Please run 
     
     $ ruby_core_ri

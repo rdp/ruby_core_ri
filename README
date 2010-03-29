@@ -34,7 +34,19 @@ $ ruby_core_ri # download your distro's sources, ri's them locally
 * Note: for 1.9 users you have to install rdoc > 2.4.3 for it to work.  To do so (until it is released):
 
     $ gem install specific_install
-    $ gem git_install -l http://github.com/downloads/rdp/rdoc/rdoc-2.5.0.prealpha.gem
+    $ gem specific_install -l http://github.com/downloads/rdp/ruby_core_ri/rdoc-2.4.9a.gem
 
-== Known issues ==
-You may need to uninstall the mislav-hanna gem first, if you have it installed (which is probably pretty rare).
+    Also for windows 1.9 users, you may have to manually go into your install and delete the file "test/ruby/test_sprintf.rb"
+      ex: C:\Ruby19\lib\ruby\gems\1.9.1\gems\ruby_core_ri-0.4.0\lib\downloaded_full_source>rm test/ruby/test_sprintf.rb (and then clear your cache--see below)
+    
+== Trouble Shooting ==
+
+With gems v 1.3.6, it "refuses to regenerate" ri and rdoc (even on failed installs of the same).
+
+So if you do an install and "nothing happens":
+$ gem rdoc --no-rdoc --ri ruby_core_ri
+
+$ # note lack of output, above
+Then you may have to uninstall the gem, or remove your C:\Ruby19\lib\ruby\gems\1.9.1\doc\ruby_core_ri-0.4.0 directory before running ruby_core_ri again.
+
+You may also need to uninstall the mislav-hanna gem first, if you have it installed (which is probably rare).

@@ -48,7 +48,7 @@ def download_headers hdrs, dest_dir = nil, just_headers = true, existing_pre_unp
   ruby_version = RUBY_VERSION[0..-3]
   
   if RUBY_VERSION >= '1.9'
-    puts "Warning: if this fails, you may need to install rdp-rdoc gem until rdoc > 2.4.3 gem is available"    
+    puts "Warning: if this fails, you may need to install rdoc > 2.4.3 see http://github.com/rdp/ruby_core_ri"    
   end
 
   if RUBY_PATCHLEVEL < 0

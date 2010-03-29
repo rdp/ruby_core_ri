@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'ruby_core_ri/ruby_core_source'
+require 'ruby_core_ri/ruby_core_ri'
 
 # sanity check
 myself = Gem.source_index.find_name('ruby_core_ri')
@@ -12,7 +12,7 @@ to_dir = myself.full_gem_path + "/lib/downloaded_full_source"
 puts "installing your full source (for rdoc/ri purposes) to #{to_dir}"
 Ruby_core_source.download_headers nil, to_dir, false # my call
 
-command = "gem rdoc --no-rdoc --ri ruby_core_ri"
+command = "gem rdoc --no-rdoc --ri ruby_core_ri" # note -- if this does nothing, it means "rubygems is cacheing your failed output" [I think]
 puts "downloaded--extracting out the ri via [" + command + "]"
 
 system command
