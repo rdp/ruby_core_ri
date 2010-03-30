@@ -47,10 +47,6 @@ def download_headers hdrs, dest_dir = nil, just_headers = true, existing_pre_unp
   ruby_dir = ""
   ruby_version = RUBY_VERSION[0..-3]
   
-  if RUBY_VERSION >= '1.9'
-    puts "Warning: if this fails, you may need to install rdoc > 2.4.3 see http://github.com/rdp/ruby_core_ri"    
-  end
-
   if RUBY_PATCHLEVEL < 0
     # some type of svn checkout
     # try to use mark's lookup
@@ -96,6 +92,14 @@ def download_headers hdrs, dest_dir = nil, just_headers = true, existing_pre_unp
       
     }
   }
+  if RUBY_VERSION >= '1.9'
+    puts "Warning: if this fails, you may need to install rdoc > 2.4.3 see http://github.com/rdp/ruby_core_ri"    
+    Dir[dest_dir + '/**/test_sprintf.rb'].each{ |file|
+      FileUtils.rm file # this file breaks rdoc on doze <sniff>
+    }
+  end
+
+
   dest_dir
 end
 

@@ -15,7 +15,7 @@
     
     $ ruby_core_ri
     
-    To install the docs locally.
+    To install the docs locally.  1.9 users please see the README.
     "
     
   end

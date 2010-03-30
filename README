@@ -1,12 +1,15 @@
-ruby_core_ri gem
+== ruby_core_ri gem ==
 
-This utility is for those whose ruby distros are lacking the core RI (ex: mingw).  For example, if you get this:
+This gem installs a local copy of the trunk RI, which is useful for those ruby distros that are lacking the core RI (ex: rubyinstaller).  
+
+For example, if you get this:
 
 $ ri File
 Nothing known about File
 
+$
 
-After installing this gem, you will get the following:
+Then after installing this gem, you will get the following (the ri is there now):
 
 $ ri File
 --------------------------------------------------- Class: File < Object
@@ -19,34 +22,32 @@ FTOOLS.RB: EXTRA TOOLS FOR THE FILE CLASS
      Documentation: Zachary Landau
 ... [etc.]
 
-The gem downloads the source for your current Ruby version, then does a gem --ri 
-against your version, thus installing the ri for Ruby's core docs locally.
 
-This is quite helpful for those of us who want to use ri for core classes.
+The gem downloads the source for your current Ruby version, then does a gem --ri, thus installing the ri for Ruby's core docs locally, though really as a gem.
 
-== Installation (takes a little while) ==
-
-* For all versions:
+== Installation (takes a little while--it's worth it if you want to use ri for core classes, though) ==
 
 $ gem install ruby_core_ri
-$ ruby_core_ri # download your distro's sources, ri's them locally
 
-* Note: for 1.9 users you have to install rdoc > 2.4.3 for it to work.  To do so (until it is released):
+$ ruby_core_ri # downloads your distro's sources, ri's them
 
-    $ gem install specific_install
-    $ gem specific_install -l http://github.com/downloads/rdp/ruby_core_ri/rdoc-2.4.9a.gem
+* Note: for 1.9 users you have to install rdoc > 2.4.3 for it to work (possibly even > 2.5.0).  
+  To do so (until bugs are fixed in rdoc trunk):
 
-    Also for windows 1.9 users, you may have to manually go into your install and delete the file "test/ruby/test_sprintf.rb"
-      ex: C:\Ruby19\lib\ruby\gems\1.9.1\gems\ruby_core_ri-0.4.0\lib\downloaded_full_source>rm test/ruby/test_sprintf.rb (and then clear your cache--see below)
+    $ gem install specific_install # install this gem plugin
+    $ gem specific_install -l http://github.com/downloads/rdp/ruby_core_ri/rdoc-2.4.3.1.gem # install a slightly fixed version that actually works with trunk
     
+    Or install that gem version by hand.
+
 == Trouble Shooting ==
 
-With gems v 1.3.6, it "refuses to regenerate" ri and rdoc (even on failed installs of the same).
+With gems v 1.3.6, gems now always "doesn't re-generate" ri and rdoc (even on failed attempts of the same).
 
-So if you do an install and "nothing happens":
+So if you attempt an install and "nothing happens" ex:
+
 $ gem rdoc --no-rdoc --ri ruby_core_ri
 
-$ # note lack of output, above
-Then you may have to uninstall the gem, or remove your C:\Ruby19\lib\ruby\gems\1.9.1\doc\ruby_core_ri-0.4.0 directory before running ruby_core_ri again.
+$ # note lack of output
 
-You may also need to uninstall the mislav-hanna gem first, if you have it installed (which is probably rare).
+Then you may have to uninstall the gem, or remove your equivalent of C:\Ruby19\lib\ruby\gems\1.9.1\doc\ruby_core_ri-0.4.0 before running ruby_core_ri again (then it will work).
+You may also need to uninstall the mislav-hanna gem first, if you have it installed.
